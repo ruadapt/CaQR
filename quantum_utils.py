@@ -10,11 +10,15 @@ import networkx as nx
 import networkx as nx
 
 def get_circuit(name):
-    qc = QuantumCircuit.from_qasm_file(f'benchmarks/{name}.qasm')
-    # circuit = qiskit.QuantumCircuit.from_qasm_file(f'{name}')
+    qc = QuantumCircuit.from_qasm_file(f'{name}')
+    circuit = qiskit.QuantumCircuit.from_qasm_file(f'{name}')
     return qc
 def output_qasm(circuit, input_argument):
-    with open(f"output/{input_argument}_reuse.qasm", "w") as file:
+    # benchmakrs/ .qasm
+    modified_name = input_argument.split("/")
+    nn = modified_name[1].split(".")
+    print(nn[0])
+    with open(f"output/{nn[0]}_reuse.qasm", "w") as file:
         file.write(circuit.qasm())
     
     
