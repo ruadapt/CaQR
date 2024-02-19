@@ -6,7 +6,6 @@ from qiskit.visualization import dag_drawer
 from qiskit.converters import circuit_to_dag,dag_to_circuit
 from qiskit.transpiler import CouplingMap
 from qiskit.visualization import plot_histogram
-from qiskit.providers.aer.noise import NoiseModel
 from qiskit.circuit import Reset
 import networkx as nx
 import qiskit
@@ -17,7 +16,6 @@ from qiskit.visualization import dag_drawer
 from qiskit.converters import circuit_to_dag,dag_to_circuit
 from qiskit.transpiler import CouplingMap
 from qiskit.visualization import plot_histogram
-from qiskit.providers.aer.noise import NoiseModel
 import networkx as nx
 from qiskit.circuit.quantumregister import Qubit
 from qiskit.circuit.library import Measure
