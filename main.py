@@ -1,7 +1,7 @@
 from qiskit import QuantumCircuit
 from circuit_analysis import find_qubit_reuse_pairs
 from circuit_analysis import modify_circuit
-from qiskit.test.mock import FakeMumbai
+# from qiskit.test.mock import FakeMumbai
 from quantum_utils import get_circuit
 from quantum_utils import output_qasm
 import sys
@@ -9,7 +9,7 @@ import sys
 def main():
 
     
-    backend = FakeMumbai()
+    # backend = FakeMumbai()
     # Example usage
     
     # Example of reading a command line argument
