@@ -7,16 +7,6 @@ from qiskit.converters import circuit_to_dag,dag_to_circuit
 from qiskit.transpiler import CouplingMap
 from qiskit.visualization import plot_histogram
 from qiskit.circuit import Reset
-import networkx as nx
-import qiskit
-import sys
-from qiskit import *
-from qiskit.visualization.pulse_v2 import draw
-from qiskit.visualization import dag_drawer
-from qiskit.converters import circuit_to_dag,dag_to_circuit
-from qiskit.transpiler import CouplingMap
-from qiskit.visualization import plot_histogram
-import networkx as nx
 from qiskit.circuit.quantumregister import Qubit
 from qiskit.circuit.library import Measure
 
