@@ -4,10 +4,10 @@ To run the file, please follow these steps:
 
 ## Installation
 
-First, install Qiskit using pip:
+First, install Qiskit with version 0.45 using pip:
 
 ```bash
-pip install qiskit
+pip install qiskit==0.45
 ```
 Then, run the main file:
 ```bash
