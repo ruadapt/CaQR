@@ -62,8 +62,7 @@ def main():
                 best_pair = reuse_pairs[i]
         if args.verbose > 0:
             print(f"Best pair: {best_pair}")
-        # print(f"Best pair: {best_pair}")
-            # print(cur_qc)
+       
         
         modified_qc = modify_circuit(cur_qc,best_pair)
         if (args.verbose > 0) :
