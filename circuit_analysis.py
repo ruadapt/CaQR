@@ -216,5 +216,3 @@ def modify_circuit(circuit, pair):
     # print(f'there is remain {visited} gates')
 
     return new_circuit
-
-#I have personally deleted many functions and processes that I have not understood the purpose of, or that I deemed to be incorrect. Feel free to add tham back if the problem demands, as I do not have full scope of the problem.
