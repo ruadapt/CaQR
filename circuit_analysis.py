@@ -132,7 +132,7 @@ def my_custom_dag(circuit):
 
 
 
-'''
+# '''
 def remove_consecutive_duplicate_gates(circuit):
     """
     Removes consecutive duplicate gates, including measurement gates, from a quantum circuit.
@@ -145,14 +145,14 @@ def remove_consecutive_duplicate_gates(circuit):
 
     for inst, qargs, cargs in circuit.data:
         # Check if the current gate is a duplicate of the previous gate
-        if inst == prev_inst and qargs == prev_qargs and cargs == prev_cargs:
+        if inst == prev_inst and qargs == prev_qargs :
             continue
 
         new_circuit.append(inst, qargs, cargs)
         prev_inst, prev_qargs, prev_cargs = inst, qargs, cargs
 
     return new_circuit
-'''
+# '''
 def modify_circuit(circuit, pair):
     """
     Modifies the given circuit by replacing operations on qubit j with qubit i,
@@ -214,7 +214,7 @@ def modify_circuit(circuit, pair):
             new_circuit.append(inst, qargs, cargs)
             visited.remove(index)    
     # print(f'there is remain {visited} gates')
-
+    new_circuit = remove_consecutive_duplicate_gates(new_circuit)
     return new_circuit
 
 #I have personally deleted many functions and processes that I have not understood the purpose of, or that I deemed to be incorrect. Feel free to add tham back if the problem demands, as I do not have full scope of the problem.
