@@ -212,46 +212,92 @@ def modified_circuit(qc,res_pair,k):
             f.write('\n')
     return qc 
             
-        
+from qiskit.converters import circuit_to_dag
+from qiskit import QuantumCircuit
+from qiskit.visualization import dag_drawer
+
+def build_custom_dag(qiskit_dag):
+    # Mapping from qiskit dag nodes to indices for our custom dag
+    node_map = {node: idx for idx, node in enumerate(qiskit_dag.topological_op_nodes())}
+    
+    # Initialize adjacency list for the custom DAG
+    adj_list = {node_map[node]: [] for node in qiskit_dag.topological_op_nodes()}
+
+    # Add edges based on the order of operations on each qubit
+    for qubit in qiskit_dag.qubits:
+        prev_node = None
+        for node in qiskit_dag.nodes_on_wire(qubit, only_ops=True):
+            if prev_node is not None:
+                # Add an edge from prev_node to node in the custom DAG
+                adj_list[node_map[prev_node]].append(node_map[node])
+            prev_node = node
+
+    return adj_list
+
+
+def has_cycle(graph, start, i, j):
+    visited = set()
+    rec_stack = set()
+
+    # Temporarily add the edge from i to j
+    if i in graph:
+        graph[i].append(j)
+    else:
+        graph[i] = [j]
+
+    def visit(node):
+        if node in rec_stack:
+            return True
+        if node in visited:
+            return False
+
+        visited.add(node)
+        rec_stack.add(node)
+        for neighbor in graph.get(node, []):
+            if visit(neighbor):
+                return True
+        rec_stack.remove(node)
+        return False
+
+    cycle_detected = visit(start)
+
+    # Remove the temporarily added edge
+    if j in graph[i]:
+        graph[i].remove(j)
+    if not graph[i]:
+        del graph[i]
+
+    return cycle_detected
+
+
+def share_same_gate(qiskit_dag, i, j):
+    for node in qiskit_dag.topological_op_nodes():
+        qubits = [qubit.index for qubit in node.qargs]
+        if i in qubits and j in qubits:
+            return True
+    return False
 
 def find_qubit_reuse_pairs(circuit):
-    # Convert the circuit to a DAG
-    dag = circuit_to_dag(circuit)
-    
-    # Get the total number of qubits
-    num_qubits = circuit.num_qubits
-    
-    # List to store pairs of reusable qubits
+    qiskit_dag = circuit_to_dag(circuit)
+    # print(qiskit_dag)
+    custom_dag = build_custom_dag(qiskit_dag)
+
+
+
+
+
+    num_qubits = len(circuit.qubits)
+
     reusable_pairs = []
 
-    # Check each pair of qubits
     for i in range(num_qubits):
         for j in range(num_qubits):
-            if i != j:
-                # Check if there is no direct gate between q_i and q_j
-                no_direct_gate = True
-                for node in dag.op_nodes():
-                    qubits = [qubit.index for qubit in node.qargs]
-                    if i in qubits and j in qubits:
-                        no_direct_gate = False
-                        break
-
-                # Check if reusing q_i as q_j does not form a cycle
-                # This is a simplified check assuming the circuit follows the conditions described
-                if no_direct_gate:
-                    if i < j and has_operation_on_qubit(circuit,i) and has_operation_on_qubit(circuit,j):  # Assuming gates are applied in order and q_i is reused as q_j only if i < j
-                        reusable_pairs.append((i, j))
+            if i != j and not share_same_gate(qiskit_dag, i, j) and not has_cycle(custom_dag, i,i,j) and has_operation_on_qubit(circuit,i) and has_operation_on_qubit(circuit,j):
+                reusable_pairs.append((i, j))
 
     return reusable_pairs
 
-# Example usage
-# qc2 = QuantumCircuit(4)
-# qc2.cx(0,3)
-# qc2.cx(1, 3)
-# qc2.cx(2,3)
 
-# reuse_pairs = find_qubit_reuse_pairs(qc2)
-# reuse_pairs
 
 
 
@@ -308,9 +354,11 @@ def modify_circuit(circuit, pair):
     operations = []
     check_list = []
     get_list = []
+    visited = []
     last_op_index_i = -1
     for index, (inst, qargs, cargs) in enumerate(circuit.data):
         operations.append((inst, qargs, cargs))
+        visited.append(index)
         if any(circuit.find_bit(q).index == i for q in qargs):
             check_list.append(index)
             last_op_index_i = index
@@ -327,6 +375,7 @@ def modify_circuit(circuit, pair):
         #     continue
         if index <= last_op_index_i and all(circuit.find_bit(q).index != j for q in qargs):
             new_circuit.append(inst, qargs, cargs)
+            visited.remove(index)
         if index == last_op_index_i:
             # Insert measurement and reset for qubit i
             new_circuit.measure(i, 0)
@@ -347,5 +396,11 @@ def modify_circuit(circuit, pair):
         if  index in get_list:
             new_qargs = [new_circuit.qubits[i] if circuit.find_bit(q).index == j else q for q in qargs]
             new_circuit.append(inst, new_qargs, cargs)
+            visited.remove(index)
+    for index, (inst, qargs, cargs) in enumerate(operations):
+        if index in visited:
+            new_circuit.append(inst, qargs, cargs)
+            visited.remove(index)
+    # print(f'there is remain {visited} gates')
 
     return remove_consecutive_duplicate_gates(new_circuit)

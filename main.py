@@ -4,6 +4,7 @@ from circuit_analysis import modify_circuit
 # from qiskit.test.mock import FakeMumbai
 from quantum_utils import get_circuit
 from quantum_utils import output_qasm
+import argparse
 import sys
 
 def main():
@@ -11,15 +12,23 @@ def main():
     
     # backend = FakeMumbai()
     # Example usage
+    parser = argparse.ArgumentParser(description="Qubit reuse pair finder")
+    parser.add_argument('-b','--benchmark', type=str, help="Path to the QASM file")
+    parser.add_argument('-v', '--verbose', type=int, default=0,
+                        help="Verbosity level (default: 0)")
     
-    # Example of reading a command line argument
-    if len(sys.argv) > 1:
-        input_argument = sys.argv[1]
-        print(input_argument)
-    else:
-        print("Sorry, no file input is given")
-        sys.exit(1)  # Exits the program with an error code (1)
 
+    args = parser.parse_args()
+    print(args.benchmark)
+    print(args.verbose)
+    # Example of reading a command line argument
+    # if len(sys.argv) > 1:
+    #     input_argument = sys.argv[1]
+    #     print(input_argument)
+    # else:
+    #     print("Sorry, no file input is given")
+    #     sys.exit(1)  # Exits the program with an error code (1)
+    input_argument = args.benchmark
     qc = get_circuit(input_argument)
     # qc = QuantumCircuit(5)
     # for k in range(5):
@@ -29,11 +38,13 @@ def main():
     # for k in range(5):
     #     qc.h(k)
     reuse_pairs = find_qubit_reuse_pairs(qc)
-    print(qc)
+    if args.verbose > 0:
+        print(qc)
     iter = 0
     cur_qc = qc.copy() 
     while len(reuse_pairs) > 0 and iter < len(qc.qubits) - 1:
-        print(reuse_pairs)
+        if args.verbose > 0:
+            print(reuse_pairs)
         depth_diff = sys.maxsize
         
         # for i in range(len(reuse_pairs)):
@@ -46,7 +57,8 @@ def main():
         # print(f"Best pair: {best_pair}")
         # print(cur_qc)
         modified_qc = modify_circuit(cur_qc,reuse_pairs[0])
-        print(modified_qc)
+        if (args.verbose > 0) :
+            print(modified_qc)
         reuse_pairs = find_qubit_reuse_pairs(modified_qc)
         cur_qc  = modified_qc.copy() 
         iter += 1
