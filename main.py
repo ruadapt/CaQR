@@ -18,18 +18,10 @@ def main():
     parser.add_argument('-b','--benchmark', type=str, help="Path to the QASM file")
     parser.add_argument('-v', '--verbose', type=int, default=0,
                         help="Verbosity level (default: 0)")
-    
+    parser.add_argument('-w', '--weight', type=list[int], default=[1,1,1],
+                        help="weight for the depth difference (default: 0)")
 
     args = parser.parse_args()
-    # print(args.benchmark)
-    # print(args.verbose)
-    # Example of reading a command line argument
-    # if len(sys.argv) > 1:
-    #     input_argument = sys.argv[1]
-    #     print(input_argument)
-    # else:
-    #     print("Sorry, no file input is given")
-    #     sys.exit(1)  # Exits the program with an error code (1)
     input_argument = args.benchmark
     qc = get_circuit(input_argument)
     # qc = QuantumCircuit(5)
@@ -44,6 +36,7 @@ def main():
         print(qc)
     iter = 0
     cur_qc = qc.copy() 
+    chain = []
     while len(reuse_pairs) > 0 and iter < len(qc.qubits) - 1:
         if args.verbose > 0:
             print(reuse_pairs)
@@ -56,13 +49,13 @@ def main():
         for i in range(len(reuse_pairs)):
             test_qc = cur_qc.copy() 
             test_out_qc = modify_circuit(test_qc, reuse_pairs[i])
-
-            if test_out_qc.depth() - cur_qc.depth() + lst_index[reuse_pairs[i][0]]+abs(lst_index[reuse_pairs[i][0]] - fst_index[reuse_pairs[i][1]]) < depth_diff:
+            
+            if args.weight[0]*(test_out_qc.depth() - cur_qc.depth()) + args.weight[1]*lst_index[reuse_pairs[i][0]]+args.weight[2]*abs(lst_index[reuse_pairs[i][0]] - fst_index[reuse_pairs[i][1]]) < depth_diff:
                 depth_diff = test_out_qc.depth() - qc.depth() + 0.5*lst_index[reuse_pairs[i][1]]
                 best_pair = reuse_pairs[i]
         if args.verbose > 0:
             print(f"Best pair: {best_pair}")
-       
+        chain.append([best_pair[0],best_pair[1]])
         
         modified_qc = modify_circuit(cur_qc,best_pair)
         if (args.verbose > 0) :
@@ -71,9 +64,25 @@ def main():
         cur_qc  = modified_qc.copy()
         iter += 1
     lst_index = last_index_operation(cur_qc)
+
+    # print(chain)
+    map = {}
+    for i in range(len(chain)):
+        if i == 0:
+            map[chain[i][0]] = [chain[i][1]]
+        else:
+            if chain[i][0] in map:
+                map[chain[i][0]].append(chain[i][1])
+            else:
+                map[chain[i][0]] = [chain[i][1]]
+    # print(map)
+    # out put the map to a txt file
+
+
     print(f"We reuse {iter} qubits, now the logical qubits needed are: {len(lst_index)}")
-    output_qasm(cur_qc, input_argument)
+    output_qasm(cur_qc, input_argument,map)
+    # add the weight as a parameter.  
+    # output the qubit chain with list<list> output as txt file
 
 if __name__ == '__main__':
     main()
-
