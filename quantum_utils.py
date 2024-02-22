@@ -13,13 +13,19 @@ def get_circuit(name):
     qc = QuantumCircuit.from_qasm_file(f'{name}')
     circuit = qiskit.QuantumCircuit.from_qasm_file(f'{name}')
     return qc
-def output_qasm(circuit, input_argument):
+def output_qasm(circuit, input_argument,map):
     # benchmakrs/ .qasm
     modified_name = input_argument.split("/")
     nn = modified_name[1].split(".")
     print(nn[0])
     with open(f"output/{nn[0]}_reuse.qasm", "w") as file:
         file.write(circuit.qasm())
+    with open(f"output/{nn[0]}_reuse_chain.txt", "w") as file:
+        for m in map:
+            file.write(f"{m} ")
+            for n in map[m]:
+                file.write(f" -> {n} ")
+        # file.write(str(map))
     
     
     

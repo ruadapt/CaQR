@@ -212,7 +212,7 @@ def modify_circuit(circuit, pair):
             visited.remove(index)
         if index in visited:
             new_circuit.append(inst, qargs, cargs)
-            visited.remove(index)    
+            visited.remove(index)
     # print(f'there is remain {visited} gates')
     new_circuit = remove_consecutive_duplicate_gates(new_circuit)
     return new_circuit
