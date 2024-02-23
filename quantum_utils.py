@@ -50,10 +50,6 @@ def union_find(map):
             
     return groups
 
-
-
-
-
 def get_circuit(name):
     qc = QuantumCircuit.from_qasm_file(f'{name}')
     circuit = qiskit.QuantumCircuit.from_qasm_file(f'{name}')

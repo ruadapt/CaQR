@@ -1,0 +1,100 @@
+Running benchmark on benchmarks/0410184_169.qasm
+We reuse 0 qubits, now the logical qubits needed are: 14
+---------------------------------
+Running benchmark on benchmarks/3_17_13.qasm
+We reuse 0 qubits, now the logical qubits needed are: 3
+---------------------------------
+Running benchmark on benchmarks/4_49_16.qasm
+We reuse 0 qubits, now the logical qubits needed are: 5
+---------------------------------
+Running benchmark on benchmarks/4gt10-v1_81.qasm
+We reuse 0 qubits, now the logical qubits needed are: 5
+---------------------------------
+Running benchmark on benchmarks/4gt11_82.qasm
+We reuse 0 qubits, now the logical qubits needed are: 5
+---------------------------------
+Running benchmark on benchmarks/4gt11_83.qasm
+We reuse 2 qubits, now the logical qubits needed are: 3
+---------------------------------
+Running benchmark on benchmarks/4gt11_84.qasm
+We reuse 1 qubits, now the logical qubits needed are: 3
+---------------------------------
+Running benchmark on benchmarks/4gt12-v0_86.qasm
+We reuse 0 qubits, now the logical qubits needed are: 6
+---------------------------------
+Running benchmark on benchmarks/4gt12-v0_87.qasm
+We reuse 0 qubits, now the logical qubits needed are: 6
+---------------------------------
+Running benchmark on benchmarks/4gt12-v0_88.qasm
+We reuse 0 qubits, now the logical qubits needed are: 6
+---------------------------------
+Running benchmark on benchmarks/4gt12-v1_89.qasm
+We reuse 0 qubits, now the logical qubits needed are: 6
+---------------------------------
+Running benchmark on benchmarks/4gt13-v1_93.qasm
+We reuse 0 qubits, now the logical qubits needed are: 5
+---------------------------------
+Running benchmark on benchmarks/4gt13_90.qasm
+We reuse 0 qubits, now the logical qubits needed are: 5
+---------------------------------
+Running benchmark on benchmarks/4gt13_91.qasm
+We reuse 0 qubits, now the logical qubits needed are: 5
+---------------------------------
+Running benchmark on benchmarks/4gt13_92.qasm
+We reuse 0 qubits, now the logical qubits needed are: 5
+---------------------------------
+Running benchmark on benchmarks/4gt4-v0_72.qasm
+We reuse 0 qubits, now the logical qubits needed are: 6
+---------------------------------
+Running benchmark on benchmarks/4gt4-v0_73.qasm
+We reuse 0 qubits, now the logical qubits needed are: 6
+---------------------------------
+Running benchmark on benchmarks/4gt4-v0_78.qasm
+We reuse 0 qubits, now the logical qubits needed are: 6
+---------------------------------
+Running benchmark on benchmarks/4gt4-v0_79.qasm
+We reuse 0 qubits, now the logical qubits needed are: 6
+---------------------------------
+Running benchmark on benchmarks/4gt4-v0_80.qasm
+We reuse 0 qubits, now the logical qubits needed are: 6
+---------------------------------
+Running benchmark on benchmarks/4gt4-v1_74.qasm
+We reuse 0 qubits, now the logical qubits needed are: 6
+---------------------------------
+Running benchmark on benchmarks/4gt5_75.qasm
+We reuse 0 qubits, now the logical qubits needed are: 5
+---------------------------------
+Running benchmark on benchmarks/4gt5_76.qasm
+We reuse 0 qubits, now the logical qubits needed are: 5
+---------------------------------
+Running benchmark on benchmarks/4gt5_77.qasm
+We reuse 0 qubits, now the logical qubits needed are: 5
+---------------------------------
+Running benchmark on benchmarks/4mod5-bdd_287.qasm
+We reuse 3 qubits, now the logical qubits needed are: 4
+---------------------------------
+Running benchmark on benchmarks/4mod5-v0_18.qasm
+We reuse 1 qubits, now the logical qubits needed are: 4
+---------------------------------
+Running benchmark on benchmarks/4mod5-v0_19.qasm
+We reuse 2 qubits, now the logical qubits needed are: 3
+---------------------------------
+Running benchmark on benchmarks/4mod5-v0_20.qasm
+We reuse 2 qubits, now the logical qubits needed are: 3
+---------------------------------
+Running benchmark on benchmarks/4mod5-v1_22.qasm
+We reuse 1 qubits, now the logical qubits needed are: 4
+---------------------------------
+Running benchmark on benchmarks/4mod5-v1_23.qasm
+We reuse 1 qubits, now the logical qubits needed are: 4
+---------------------------------
+Running benchmark on benchmarks/4mod5-v1_24.qasm
+We reuse 1 qubits, now the logical qubits needed are: 4
+---------------------------------
+Running benchmark on benchmarks/4mod7-v0_94.qasm
+We reuse 0 qubits, now the logical qubits needed are: 5
+---------------------------------
+Running benchmark on benchmarks/4mod7-v1_96.qasm
+We reuse 0 qubits, now the logical qubits needed are: 5
+---------------------------------
+Running benchmark on benchmarks/9symml_195.qasm
