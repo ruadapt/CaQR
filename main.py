@@ -65,7 +65,7 @@ def main():
         iter += 1
     lst_index = last_index_operation(cur_qc)
 
-    print(chain)
+    # print(chain)
     map = {}
     for i in range(len(chain)):
         if i == 0:
@@ -75,7 +75,7 @@ def main():
                 map[chain[i][0]].append(chain[i][1])
             else:
                 map[chain[i][0]] = [chain[i][1]]
-    print(map)
+    # print(map)
     # out put the map to a txt file
 
 
