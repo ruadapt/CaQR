@@ -75,7 +75,7 @@ def main():
                 map[chain[i][0]].append(chain[i][1])
             else:
                 map[chain[i][0]] = [chain[i][1]]
-    # print(map)
+
     # out put the map to a txt file
 
 

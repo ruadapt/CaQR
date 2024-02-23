@@ -160,7 +160,7 @@ def remove_consecutive_duplicate_gates(circuit):
 
     for inst, qargs, cargs in circuit.data:
         # Check if the current gate is a duplicate of the previous gate
-        if inst == prev_inst and qargs == prev_qargs :
+        if inst == prev_inst and inst.name == 'measure' and qargs == prev_qargs :
             continue
 
         new_circuit.append(inst, qargs, cargs)
