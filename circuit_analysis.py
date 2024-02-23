@@ -28,8 +28,8 @@ from qiskit import QuantumCircuit
 from qiskit.visualization import dag_drawer
 
 def has_cycle(graph, start, i, j):
-    visited = set()
-    rec_stack = set()
+    # visited = set()
+    # rec_stack = set()
 
     # Temporarily add the edge from i to j
     if i in graph:
@@ -39,17 +39,22 @@ def has_cycle(graph, start, i, j):
 
     #print(i, j, graph)
     def visit(node):
-        if node in rec_stack:
-            return True
-        if node in visited:
-            return False
-
-        visited.add(node)
-        rec_stack.add(node)
-        for neighbor in graph.get(node, []):
-            if visit(neighbor):
-                return True
-        rec_stack.remove(node)
+        visited = set()
+        stack = [(start, iter(graph.get(start, [])))]
+        while stack:
+            node, children = stack[-1]
+            if node not in visited:
+                visited.add(node)
+            try:
+                child = next(children)
+                if child in visited:
+                    # Check if the child is on the current path
+                    if any(child == c for c, _ in stack):
+                        return True
+                else:
+                    stack.append((child, iter(graph.get(child, []))))
+            except StopIteration:
+                stack.pop()
         return False
 
     cycle_detected = visit(start)
