@@ -25,6 +25,7 @@ def output_qasm(circuit, input_argument,map):
             file.write(f"{m} ")
             for n in map[m]:
                 file.write(f" -> {n} ")
+            file.write("\n")
         # file.write(str(map))
     
     
