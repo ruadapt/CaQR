@@ -31,6 +31,7 @@ def has_cycle(graph, start, i, j):
     visited = set()
     rec_stack = set()
 
+    '''
     # Temporarily add the edge from i to j
     if i in graph:
         graph[i].append(j)
@@ -38,6 +39,20 @@ def has_cycle(graph, start, i, j):
         graph[i] = [j]
 
     #print(i, j, graph)
+    '''
+
+    stack = [j]
+    cycle_detected = False
+    while len(stack) > 0:
+        node = stack.pop(0)
+        visited.add(node)
+        if node == i:
+            cycle_detected = True
+            break
+        for neighbor in graph.get(node, []):
+            if neighbor not in visited and neighbor not in stack:
+                stack.append(neighbor)
+    '''
     def visit(node):
         if node in rec_stack:
             return True
@@ -53,13 +68,13 @@ def has_cycle(graph, start, i, j):
         return False
 
     cycle_detected = visit(start)
-
+    
     # Remove the temporarily added edge
     if j in graph[i]:
         graph[i].remove(j)
     if not graph[i]:
         del graph[i]
-
+    '''
     return cycle_detected
 
 
