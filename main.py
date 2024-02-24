@@ -8,6 +8,7 @@ from quantum_utils import get_circuit
 from quantum_utils import output_qasm
 import argparse
 import sys
+import copy
 
 def main():
 
@@ -55,7 +56,7 @@ def main():
                 best_pair = reuse_pairs[i]
         if args.verbose > 0:
             print(f"Best pair: {best_pair}")
-        chain.append([best_pair[0],best_pair[1]])
+        chain.append((best_pair[0],best_pair[1]))
         
         modified_qc = modify_circuit(cur_qc,best_pair)
         if (args.verbose > 0) :
@@ -66,21 +67,34 @@ def main():
     lst_index = last_index_operation(cur_qc)
 
     # print(chain)
-    map = {}
-    for i in range(len(chain)):
-        if i == 0:
-            map[chain[i][0]] = [chain[i][1]]
+    marked = set()
+    heads = set()
+    map_pre = {}
+    for start, end in chain:
+        if start in map_pre:
+            map_pre[start].append(end)
         else:
-            if chain[i][0] in map:
-                map[chain[i][0]].append(chain[i][1])
-            else:
-                map[chain[i][0]] = [chain[i][1]]
+            map_pre[start] = [end]
+            if start not in marked:
+                heads.add(start)
+        if end in heads:
+            heads.remove(end)
+        marked.add(end)
+
+    map_post = {}
+    for h in heads:
+        map_post[h] = []
+        stack = list(reversed(map_pre[h]))
+        while len(stack) > 0:
+            node = stack.pop()
+            map_post[h].append(node)
+            if node in map_pre:
+                stack.extend(reversed(map_pre[node]))
 
     # out put the map to a txt file
 
-
     print(f"We reuse {iter} qubits, now the logical qubits needed are: {len(lst_index)}")
-    output_qasm(cur_qc, input_argument,map)
+    output_qasm(cur_qc, input_argument,map_post)
     # add the weight as a parameter.  
     # output the qubit chain with list<list> output as txt file
 

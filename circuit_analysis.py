@@ -28,7 +28,7 @@ from qiskit import QuantumCircuit
 from qiskit.visualization import dag_drawer
 
 def has_cycle(graph, start, i, j):
-    # visited = set()
+    visited = set()
     # rec_stack = set()
 
     '''
