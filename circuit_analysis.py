@@ -50,7 +50,7 @@ def has_cycle(graph, start, i, j):
             cycle_detected = True
             break
         for neighbor in graph.get(node, []):
-            if neighbor not in visited and neighbor not in stack:
+            if neighbor not in visited and neighbor not in stack and node <= i:
                 stack.append(neighbor)
     '''
     def visit(node):
