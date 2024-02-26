@@ -111,6 +111,8 @@ def main(base_filename, reuse_filename, chain_filename):
     
     base_c = get_circuit(base_filename)
     modified_c = get_circuit(reuse_filename)
+
+    #convert chain to dict
     chain = {}
     for line in open(chain_filename):
         base = None
@@ -127,7 +129,7 @@ def main(base_filename, reuse_filename, chain_filename):
             contChain = False
 
     mappingTracker = dict()
-    print(chain)
+    
     visited = set()
     for i,j in chain.items():
         mappingTracker[i] = [i] + j
@@ -142,7 +144,7 @@ def main(base_filename, reuse_filename, chain_filename):
         for i,j in mappingTracker.items():
             out[i] = j[0]
         return out
-    print(mapping())
+    
     rev_map = [i for i in range(0, base_c.num_qubits)]
     for i,j in chain.items():
         for k in j:
@@ -151,9 +153,6 @@ def main(base_filename, reuse_filename, chain_filename):
     gt = WireTracker(base_c)
     rt = WireTracker(modified_c)
 
-    #testing
-
-    l = []
     x = gt.getOpFromSubset(mapping().values())
     
     while True:
@@ -161,18 +160,62 @@ def main(base_filename, reuse_filename, chain_filename):
             break
         (instr, qbit, cbit) = x
         qbit = map_qubits(qbit, mapping())
-        l.append((instr.name, qbit, cbit))
+        
+        x_printable = (instr.name, qbit, cbit)
+
+        r_op = None
+        for q in qbit:
+            rtbit = rev_map[q]
+            ptr_op, ptr_index = rt.getCurrentOp(rtbit)
+            if not op_eq(x, ptr_op, mapping()) or r_op != None and not op_eq(r_op, ptr_op):
+                print("Operation on base does not match modified")
+                return False
+            if gt.getCurrentOp(q)[1] != ptr_index:
+                print("Operation indices on base does not match modified")
+                return False
+            r_op = ptr_op
+
+        r_op_printable = (r_op[0].name, r_op[1], r_op[2])
+        print(f"{x_printable} <--> {r_op_printable}")
+
+        rt.eliminateOp(r_op)
         gt.eliminateOp(x)
 
         for q in qbit:
             if gt.getCurrentOp(q) == None and len(mappingTracker[rev_map[q]]) > 1:
-                print("switch to", mappingTracker[rev_map[q]].pop(0))
-                print(mappingTracker)
+                rtbit = rev_map[q]
 
+                while True:
+                    x,index = rt.getCurrentOp(rtbit)
+                    if len(x[1]) != 1 or index != 0:
+                        print("Improper gates in modified")
+                        return False
+                    instr_name = x[0].name
+                    if instr_name == 'reset':
+                        rt.eliminateOp(x)
+                        break
+                    if instr_name == 'measure':
+                        rt.eliminateOp(x)
+                        continue
+                    print("Improper gates in modified")
+                    return False
+
+
+                mappingTracker[rtbit].pop(0)
+                print(f"switch {q} to {mappingTracker[rtbit][0]}")
+                
         x = gt.getOpFromSubset(mapping().values())
-    print(l)
     
+    for i in range(gt.circuit.num_qubits):
+        if gt.getCurrentOp(i) != None:
+            print("Gates in original not addressed (This shouldn't happen)")
+            return False
+    for i in range(rt.circuit.num_qubits):
+        if rt.getCurrentOp(i) != None:
+            print("Gates in modified not addressed")
+            return False    
 
+    return True
 
 
 if __name__ == "__main__":
