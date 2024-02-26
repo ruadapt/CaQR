@@ -63,12 +63,12 @@ def op_eq(op1 : tuple[Instruction,list[int],list[int]], op2 : tuple[Instruction,
         return False
     return True
 
-def main():
-    bm = sys.argv[1]
-    base_c = get_circuit(f"benchmarks/{bm}.qasm")
-    modified_c = get_circuit(f"output/{bm}_reuse.qasm")
+def main(base_filename, reuse_filename, chain_filename):
+    
+    base_c = get_circuit(base_filename)
+    modified_c = get_circuit(reuse_filename)
     chain = {}
-    for line in open(f"output/{bm}_reuse_chain.txt"):
+    for line in open(chain_filename):
         base = None
         contChain = False
         for term in line.split():
@@ -81,6 +81,7 @@ def main():
                 base = int(term)
                 chain[base] = []
             contChain = False
+
     mapping = [i for i in range(base_c.num_qubits)]
     for k,v in chain.items():
         for i in v:
@@ -101,11 +102,21 @@ def main():
         qbit = map_qubits(qbit, mapping)
         l2.append(((instr, qbit, cbit), index))
     print(l, "\n", l2)
-
-    #print(base_c)
-
+    
+    return True
 
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) == 2:
+        bm = sys.argv[1]
+        base_filename = f"benchmarks/{bm}.qasm"
+        reuse_filename = f"output/{bm}_reuse.qasm"
+        chain_filename = f"output/{bm}_reuse_chain.txt"
+    elif len(sys.argv) == 4:
+        base_filename = sys.argv[1]
+        reuse_filename = sys.argv[2]
+        chain_filename = sys.argv[3]
+    else:
+        raise Exception("Invalid Argument Count")
+    main(base_filename, reuse_filename, chain_filename)
