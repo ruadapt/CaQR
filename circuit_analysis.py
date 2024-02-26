@@ -40,6 +40,8 @@ def has_cycle(graph, start, i, j):
 
     #print(i, j, graph)
     '''
+    if i < j:
+        return False
 
     stack = [j]
     cycle_detected = False
@@ -99,17 +101,17 @@ def find_qubit_reuse_pairs(circuit):
 
     reusable_pairs = []
 
+    last_i = last_index_operation(circuit)
+    first_i = first_index_operation(circuit)
+
     for i in range(num_qubits):
-        last_op_index_i = -1
-        for index, (inst, qargs, cargs) in enumerate(circuit.data):
-            if any(circuit.find_bit(q).index == i for q in qargs):
-                last_op_index_i = index
+        if i not in last_i:
+            continue
+        last_op_index_i = last_i[i]
         for j in range(num_qubits):
-            first_op_index_j = -1
-            for index, (inst, qargs, cargs) in enumerate(circuit.data):
-                if any(circuit.find_bit(q).index == j for q in qargs):
-                    first_op_index_j = index
-                    break
+            if j not in first_i:
+                continue
+            first_op_index_j = first_i[j]
 
 
             if i != j and not share_same_gate(qiskit_dag, i, j) and not has_cycle(custom_dag, last_op_index_i,last_op_index_i,first_op_index_j) and has_operation_on_qubit(circuit,i) and has_operation_on_qubit(circuit,j):

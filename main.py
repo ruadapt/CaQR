@@ -80,8 +80,7 @@ def main():
         if end in heads:
             heads.remove(end)
         marked.add(end)
-    print(map_pre)
-    map_post = map_pre
+    #print(map_pre)
     
     map_post = {}
     for h in heads:
@@ -92,7 +91,7 @@ def main():
             map_post[h].append(node)
             if node in map_pre:
                 stack.extend(reversed(map_pre[node]))
-    print(map_post)
+    #print(map_post)
     
     # out put the map to a txt file
 

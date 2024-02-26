@@ -2,6 +2,8 @@ import sys
 from quantum_utils import get_circuit
 from qiskit.circuit import Instruction
 
+DEBUG = False
+
 class WireTracker:
     def __init__(self, circuit):
         self.circuit = circuit
@@ -161,7 +163,8 @@ def main(base_filename, reuse_filename, chain_filename):
         (instr, qbit, cbit) = x
         qbit = map_qubits(qbit, mapping())
         
-        x_printable = (instr.name, qbit, cbit)
+        if DEBUG:
+            x_printable = (instr.name, qbit, cbit)
 
         r_op = None
         for q in qbit:
@@ -176,7 +179,8 @@ def main(base_filename, reuse_filename, chain_filename):
             r_op = ptr_op
 
         r_op_printable = (r_op[0].name, r_op[1], r_op[2])
-        print(f"{x_printable} <--> {r_op_printable}")
+        if DEBUG:
+            print(f"{x_printable} <--> {r_op_printable}")
 
         rt.eliminateOp(r_op)
         gt.eliminateOp(x)
@@ -202,7 +206,8 @@ def main(base_filename, reuse_filename, chain_filename):
 
 
                 mappingTracker[rtbit].pop(0)
-                print(f"switch {q} to {mappingTracker[rtbit][0]}")
+                if DEBUG:
+                    print(f"switch {q} to {mappingTracker[rtbit][0]}")
                 
         x = gt.getOpFromSubset(mapping().values())
     
@@ -217,7 +222,11 @@ def main(base_filename, reuse_filename, chain_filename):
 
     return True
 
-
+'''
+For this current version, there are 2 accepted input schemes:
+1 arg: that one arg is used to contruct the filenames for the base circuit, the modified circuit, and the chain file.
+3 args: the base circuit, modified circuit, and chain file are given in that order, with exact file paths
+'''
 if __name__ == "__main__":
     if len(sys.argv) == 2:
         bm = sys.argv[1]
@@ -231,3 +240,7 @@ if __name__ == "__main__":
     else:
         raise Exception("Invalid Argument Count")
     result = main(base_filename, reuse_filename, chain_filename)
+    if result:
+        print("Validation passed")
+    else:
+        print("Validation failed")
