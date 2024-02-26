@@ -7,33 +7,83 @@ class WireTracker:
         self.circuit = circuit
         self.wires : list[list] = [[] for _ in range(circuit.num_qubits)]
         self.marker = -1
+        for i in range(len(self.wires)):
+            self.getCurrentOp(i)
+        
+    def increment(self):
+        if self.marker >= len(self.circuit.data) - 1:
+            return False
+        self.marker += 1
+        dat = self.circuit.data[self.marker]
+        instr, quargs, cargs = dat
+        qbits = [self.circuit.find_bit(q).index for q in quargs]
+        cbits = [self.circuit.find_bit(c).index for c in cargs]
+        for index, q in enumerate(qbits):
+            self.wires[q].append(((instr, qbits, cbits), index))
+        return True
 
-    def getNext(self, wire):
+    def getCurrentOp(self, wire):
         if wire >= len(self.wires):
             raise Exception("Not a valid qbit")
-        while len(self.wires[wire]) <= 0 and self.marker < len(self.circuit.data) - 1:
-            self.marker += 1
-            dat = self.circuit.data[self.marker]
-            instr, quargs, cargs = dat
-            qbits = [self.circuit.find_bit(q).index for q in quargs]
-            cbits = [self.circuit.find_bit(c).index for c in cargs]
-            for index, q in enumerate(qbits):
-                self.wires[q].append(((instr, qbits, cbits), index))
+        while len(self.wires[wire]) <= 0:
+            if not self.increment():
+                break
+        if len(self.wires[wire]) > 0:
+            return self.wires[wire][0]
+        return None
+
+    def getNextOp(self, wire):
+        if wire >= len(self.wires):
+            raise Exception("Not a valid qbit")
+
+        if len(self.wires[wire]) > 0:
+            self.wires[wire].pop(0)
+
+        while len(self.wires[wire]) <= 0:
+            if not self.increment():
+                break
 
         if len(self.wires[wire]) <= 0:
             return None
-        return self.wires[wire].pop(0)
+        return self.wires[wire][0]
+
+    def getOpFromSubset(self, qbits):
+        for q in qbits:
+            if self.getCurrentOp(q) == None:
+                continue
+            op,_ = self.getCurrentOp(q)
+            qb = op[1]
+            for argindex, qarg in enumerate(qb):
+                if self.getCurrentOp(qarg) == None:
+                    break
+                
+                if not op_eq(op, self.getCurrentOp(qarg)[0]) or argindex != self.getCurrentOp(qarg)[1] or qarg not in qbits:
+                    break
+            else:
+                return op
+        return None
+
+    def eliminateOp(self, op):
+        for i,q in enumerate(op[1]):
+            wireop,index = self.getCurrentOp(q)
+            if not op_eq(wireop, op):
+                raise Exception("Operation elimiation not valid")
+            if index != i:
+                raise Exception("Operation elimiation not valid")
+            self.getNextOp(q)
+
 
     def __str__(self) -> str:
         return repr(self.wires)
 
 
-def map_qubits(qubits : list[int], mapping : list[int]):
+def map_qubits(qubits : list[int], mapping : dict):
     out = []
     for q in qubits:
-        if q >= len(mapping):
-            raise Exception("Qubit out of range")
-        out.append(mapping[q])
+        if q not in mapping.keys():
+            out.append(q)
+        else:
+            out.append(mapping[q])
     return out
 
 def list_eq(arr1 : list, arr2 : list):
@@ -45,6 +95,8 @@ def list_eq(arr1 : list, arr2 : list):
     return count == len(arr1) == len(arr2)
 
 def op_eq(op1 : tuple[Instruction,list[int],list[int]], op2 : tuple[Instruction,list[int],list[int]], map_over_2 = None):
+    if op1 == None or op2 == None:
+        return False
     if op1[0].name != op2[0].name:
         return False
     if op1[0].num_qubits != op2[0].num_qubits:
@@ -82,28 +134,37 @@ def main(base_filename, reuse_filename, chain_filename):
                 chain[base] = []
             contChain = False
 
-    mapping = [i for i in range(base_c.num_qubits)]
-    for k,v in chain.items():
-        for i in v:
-            mapping[i] = k
-    print(mapping)
+    mappingTracker = dict()
+    print(chain)
+    for i,j in chain.items():
+        mappingTracker[i] = [i] + j
+    def mapping():
+        out = dict()
+        for i,j in mappingTracker.items():
+            out[i] = j[0]
+        return out
+    print(mapping())
+
+    gt = WireTracker(base_c)
+    rt = WireTracker(modified_c)
 
     #testing
 
-    gt = WireTracker(base_c)
     l = []
     l2 = []
+    x = rt.getOpFromSubset([0,3])
+    mappingTracker[3].pop(0)
     while True:
-        x = gt.getNext(0)
         if x == None:
             break
-        (instr, qbit, cbit), index = x
-        l.append(((instr, qbit, cbit), index))
-        qbit = map_qubits(qbit, mapping)
-        l2.append(((instr, qbit, cbit), index))
+        (instr, qbit, cbit) = x
+        l.append((instr.name, qbit, cbit))
+        qbit = map_qubits(qbit, mapping())
+        l2.append((instr.name, qbit, cbit))
+        rt.eliminateOp(x)
+        x = rt.getOpFromSubset([0,3])
     print(l, "\n", l2)
     
-    return True
 
 
 
@@ -119,4 +180,4 @@ if __name__ == "__main__":
         chain_filename = sys.argv[3]
     else:
         raise Exception("Invalid Argument Count")
-    main(base_filename, reuse_filename, chain_filename)
+    result = main(base_filename, reuse_filename, chain_filename)
