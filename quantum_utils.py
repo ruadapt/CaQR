@@ -55,8 +55,8 @@ def get_circuit(name):
     circuit = qiskit.QuantumCircuit.from_qasm_file(f'{name}')
     return qc
 def output_qasm(circuit, input_argument,map):
-    result_groups = union_find(map)
-    map = result_groups
+    #result_groups = union_find(map)
+    #map = result_groups
     # benchmakrs/ .qasm
     modified_name = input_argument.split("/")
     nn = modified_name[1].split(".")

@@ -80,7 +80,9 @@ def main():
         if end in heads:
             heads.remove(end)
         marked.add(end)
-
+    print(map_pre)
+    map_post = map_pre
+    
     map_post = {}
     for h in heads:
         map_post[h] = []
@@ -90,7 +92,8 @@ def main():
             map_post[h].append(node)
             if node in map_pre:
                 stack.extend(reversed(map_pre[node]))
-
+    print(map_post)
+    
     # out put the map to a txt file
 
     print(f"We reuse {iter} qubits, now the logical qubits needed are: {len(lst_index)}")

@@ -35,17 +35,9 @@ class WireTracker:
     def getNextOp(self, wire):
         if wire >= len(self.wires):
             raise Exception("Not a valid qbit")
-
         if len(self.wires[wire]) > 0:
             self.wires[wire].pop(0)
-
-        while len(self.wires[wire]) <= 0:
-            if not self.increment():
-                break
-
-        if len(self.wires[wire]) <= 0:
-            return None
-        return self.wires[wire][0]
+        return self.getCurrentOp(wire)
 
     def getOpFromSubset(self, qbits):
         for q in qbits:
@@ -136,14 +128,25 @@ def main(base_filename, reuse_filename, chain_filename):
 
     mappingTracker = dict()
     print(chain)
+    visited = set()
     for i,j in chain.items():
         mappingTracker[i] = [i] + j
+        visited.add(i)
+        for jval in j:
+            visited.add(jval)
+    for b in range(modified_c.num_qubits):
+        if b not in visited:
+            mappingTracker[b] = [b]
     def mapping():
         out = dict()
         for i,j in mappingTracker.items():
             out[i] = j[0]
         return out
     print(mapping())
+    rev_map = [i for i in range(0, base_c.num_qubits)]
+    for i,j in chain.items():
+        for k in j:
+            rev_map[k] = i
 
     gt = WireTracker(base_c)
     rt = WireTracker(modified_c)
@@ -151,19 +154,23 @@ def main(base_filename, reuse_filename, chain_filename):
     #testing
 
     l = []
-    l2 = []
-    x = rt.getOpFromSubset([0,3])
-    mappingTracker[3].pop(0)
+    x = gt.getOpFromSubset(mapping().values())
+    
     while True:
         if x == None:
             break
         (instr, qbit, cbit) = x
-        l.append((instr.name, qbit, cbit))
         qbit = map_qubits(qbit, mapping())
-        l2.append((instr.name, qbit, cbit))
-        rt.eliminateOp(x)
-        x = rt.getOpFromSubset([0,3])
-    print(l, "\n", l2)
+        l.append((instr.name, qbit, cbit))
+        gt.eliminateOp(x)
+
+        for q in qbit:
+            if gt.getCurrentOp(q) == None and len(mappingTracker[rev_map[q]]) > 1:
+                print("switch to", mappingTracker[rev_map[q]].pop(0))
+                print(mappingTracker)
+
+        x = gt.getOpFromSubset(mapping().values())
+    print(l)
     
 
 
