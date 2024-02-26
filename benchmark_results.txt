@@ -1,100 +1,672 @@
-Running benchmark on benchmarks/0410184_169.qasm
+Running benchmark on 0410184_169
 We reuse 0 qubits, now the logical qubits needed are: 14
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/3_17_13.qasm
+Running benchmark on 3_17_13
 We reuse 0 qubits, now the logical qubits needed are: 3
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4_49_16.qasm
+Running benchmark on 4_49_16
 We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt10-v1_81.qasm
+Running benchmark on 4gt10-v1_81
 We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt11_82.qasm
+Running benchmark on 4gt11_82
 We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt11_83.qasm
+Running benchmark on 4gt11_83
 We reuse 2 qubits, now the logical qubits needed are: 3
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt11_84.qasm
+Running benchmark on 4gt11_84
 We reuse 1 qubits, now the logical qubits needed are: 3
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt12-v0_86.qasm
+Running benchmark on 4gt12-v0_86
 We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt12-v0_87.qasm
+Running benchmark on 4gt12-v0_87
 We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt12-v0_88.qasm
+Running benchmark on 4gt12-v0_88
 We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt12-v1_89.qasm
+Running benchmark on 4gt12-v1_89
 We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt13-v1_93.qasm
+Running benchmark on 4gt13-v1_93
 We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt13_90.qasm
+Running benchmark on 4gt13_90
 We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt13_91.qasm
+Running benchmark on 4gt13_91
 We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt13_92.qasm
+Running benchmark on 4gt13_92
 We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt4-v0_72.qasm
+Running benchmark on 4gt4-v0_72
 We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt4-v0_73.qasm
+Running benchmark on 4gt4-v0_73
 We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt4-v0_78.qasm
+Running benchmark on 4gt4-v0_78
 We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt4-v0_79.qasm
+Running benchmark on 4gt4-v0_79
 We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt4-v0_80.qasm
+Running benchmark on 4gt4-v0_80
 We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt4-v1_74.qasm
+Running benchmark on 4gt4-v1_74
 We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt5_75.qasm
+Running benchmark on 4gt5_75
 We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt5_76.qasm
+Running benchmark on 4gt5_76
 We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4gt5_77.qasm
+Running benchmark on 4gt5_77
 We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4mod5-bdd_287.qasm
+Running benchmark on 4mod5-bdd_287
 We reuse 3 qubits, now the logical qubits needed are: 4
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4mod5-v0_18.qasm
+Running benchmark on 4mod5-v0_18
 We reuse 1 qubits, now the logical qubits needed are: 4
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4mod5-v0_19.qasm
+Running benchmark on 4mod5-v0_19
 We reuse 2 qubits, now the logical qubits needed are: 3
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4mod5-v0_20.qasm
+Running benchmark on 4mod5-v0_20
 We reuse 2 qubits, now the logical qubits needed are: 3
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4mod5-v1_22.qasm
+Running benchmark on 4mod5-v1_22
 We reuse 1 qubits, now the logical qubits needed are: 4
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4mod5-v1_23.qasm
+Running benchmark on 4mod5-v1_23
 We reuse 1 qubits, now the logical qubits needed are: 4
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4mod5-v1_24.qasm
+Running benchmark on 4mod5-v1_24
 We reuse 1 qubits, now the logical qubits needed are: 4
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4mod7-v0_94.qasm
+Running benchmark on 4mod7-v0_94
 We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/4mod7-v1_96.qasm
+Running benchmark on 4mod7-v1_96
 We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
 ---------------------------------
-Running benchmark on benchmarks/9symml_195.qasm
+Running benchmark on 9symml_195
+We reuse 0 qubits, now the logical qubits needed are: 11
+Validation passed
+---------------------------------
+Running benchmark on C17_204
+We reuse 0 qubits, now the logical qubits needed are: 7
+Validation passed
+---------------------------------
+Running benchmark on adr4_197
+We reuse 0 qubits, now the logical qubits needed are: 13
+Validation passed
+---------------------------------
+Running benchmark on aj-e11_165
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on alu-bdd_288
+We reuse 2 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on alu-v0_26
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on alu-v0_27
+We reuse 1 qubits, now the logical qubits needed are: 4
+Validation passed
+---------------------------------
+Running benchmark on alu-v0_27_example
+We reuse 1 qubits, now the logical qubits needed are: 4
+Validation passed
+---------------------------------
+Running benchmark on alu-v1_28
+We reuse 1 qubits, now the logical qubits needed are: 4
+Validation passed
+---------------------------------
+Running benchmark on alu-v1_29
+We reuse 1 qubits, now the logical qubits needed are: 4
+Validation passed
+---------------------------------
+Running benchmark on alu-v2_30
+We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
+---------------------------------
+Running benchmark on alu-v2_31
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on alu-v2_32
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on alu-v2_33
+We reuse 1 qubits, now the logical qubits needed are: 4
+Validation passed
+---------------------------------
+Running benchmark on alu-v3_34
+We reuse 1 qubits, now the logical qubits needed are: 4
+Validation passed
+---------------------------------
+Running benchmark on alu-v3_35
+We reuse 1 qubits, now the logical qubits needed are: 4
+Validation passed
+---------------------------------
+Running benchmark on alu-v4_36
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on alu-v4_37
+We reuse 1 qubits, now the logical qubits needed are: 4
+Validation passed
+---------------------------------
+Running benchmark on bv_n10
+We reuse 8 qubits, now the logical qubits needed are: 2
+Validation passed
+---------------------------------
+Running benchmark on cc_n10
+We reuse 8 qubits, now the logical qubits needed are: 2
+Validation passed
+---------------------------------
+Running benchmark on clip_206
+We reuse 0 qubits, now the logical qubits needed are: 14
+Validation passed
+---------------------------------
+Running benchmark on cm152a_212
+We reuse 4 qubits, now the logical qubits needed are: 8
+Validation passed
+---------------------------------
+Running benchmark on cm42a_207
+We reuse 3 qubits, now the logical qubits needed are: 11
+Validation passed
+---------------------------------
+Running benchmark on cm82a_208
+We reuse 0 qubits, now the logical qubits needed are: 8
+Validation passed
+---------------------------------
+Running benchmark on cm85a_209
+We reuse 0 qubits, now the logical qubits needed are: 14
+Validation passed
+---------------------------------
+Running benchmark on cnt3-5_179
+We reuse 10 qubits, now the logical qubits needed are: 6
+Validation passed
+---------------------------------
+Running benchmark on cnt3-5_180
+We reuse 10 qubits, now the logical qubits needed are: 6
+Validation passed
+---------------------------------
+Running benchmark on co14_215
+We reuse 0 qubits, now the logical qubits needed are: 15
+Validation passed
+---------------------------------
+Running benchmark on con1_216
+We reuse 0 qubits, now the logical qubits needed are: 9
+Validation passed
+---------------------------------
+Running benchmark on cycle10_2_110
+We reuse 0 qubits, now the logical qubits needed are: 12
+Validation passed
+---------------------------------
+Running benchmark on dc1_220
+We reuse 0 qubits, now the logical qubits needed are: 11
+Validation passed
+---------------------------------
+Running benchmark on dc2_222
+We reuse 1 qubits, now the logical qubits needed are: 14
+Validation passed
+---------------------------------
+Running benchmark on decod24-bdd_294
+We reuse 2 qubits, now the logical qubits needed are: 4
+Validation passed
+---------------------------------
+Running benchmark on decod24-enable_126
+We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
+---------------------------------
+Running benchmark on decod24-v0_38
+We reuse 0 qubits, now the logical qubits needed are: 4
+Validation passed
+---------------------------------
+Running benchmark on decod24-v1_41
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on decod24-v2_43
+We reuse 0 qubits, now the logical qubits needed are: 4
+Validation passed
+---------------------------------
+Running benchmark on decod24-v3_45
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on dist_223
+We reuse 0 qubits, now the logical qubits needed are: 13
+Validation passed
+---------------------------------
+Running benchmark on ex-1_166
+We reuse 0 qubits, now the logical qubits needed are: 3
+Validation passed
+---------------------------------
+Running benchmark on ex1_226
+We reuse 4 qubits, now the logical qubits needed are: 2
+Validation passed
+---------------------------------
+Running benchmark on ex2_227
+We reuse 0 qubits, now the logical qubits needed are: 7
+Validation passed
+---------------------------------
+Running benchmark on ex3_229
+We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
+---------------------------------
+Running benchmark on f2_232
+We reuse 0 qubits, now the logical qubits needed are: 8
+Validation passed
+---------------------------------
+Running benchmark on graycode6_47
+We reuse 3 qubits, now the logical qubits needed are: 3
+Validation passed
+---------------------------------
+Running benchmark on ground_state_estimation_10
+We reuse 0 qubits, now the logical qubits needed are: 13
+Validation passed
+---------------------------------
+Running benchmark on ham15_107
+We reuse 0 qubits, now the logical qubits needed are: 15
+Validation passed
+---------------------------------
+Running benchmark on ham3_102
+We reuse 0 qubits, now the logical qubits needed are: 3
+Validation passed
+---------------------------------
+Running benchmark on ham7_104
+We reuse 0 qubits, now the logical qubits needed are: 7
+Validation passed
+---------------------------------
+Running benchmark on hwb4_49
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on hwb5_53
+We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
+---------------------------------
+Running benchmark on hwb6_56
+We reuse 0 qubits, now the logical qubits needed are: 7
+Validation passed
+---------------------------------
+Running benchmark on hwb7_59
+We reuse 0 qubits, now the logical qubits needed are: 8
+Validation passed
+---------------------------------
+Running benchmark on hwb8_113
+We reuse 0 qubits, now the logical qubits needed are: 9
+Validation passed
+---------------------------------
+Running benchmark on hwb9_119
+We reuse 0 qubits, now the logical qubits needed are: 10
+Validation passed
+---------------------------------
+Running benchmark on inc_237
+We reuse 2 qubits, now the logical qubits needed are: 14
+Validation passed
+---------------------------------
+Running benchmark on ising_model_10
+We reuse 0 qubits, now the logical qubits needed are: 10
+Validation passed
+---------------------------------
+Running benchmark on ising_model_13
+We reuse 2 qubits, now the logical qubits needed are: 11
+Validation passed
+---------------------------------
+Running benchmark on ising_model_16
+We reuse 5 qubits, now the logical qubits needed are: 11
+Validation passed
+---------------------------------
+Running benchmark on life_238
+We reuse 0 qubits, now the logical qubits needed are: 11
+Validation passed
+---------------------------------
+Running benchmark on majority_239
+We reuse 0 qubits, now the logical qubits needed are: 7
+Validation passed
+---------------------------------
+Running benchmark on max46_240
+We reuse 0 qubits, now the logical qubits needed are: 10
+Validation passed
+---------------------------------
+Running benchmark on miller_11
+We reuse 0 qubits, now the logical qubits needed are: 3
+Validation passed
+---------------------------------
+Running benchmark on mini-alu_167
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on mini_alu_305
+We reuse 4 qubits, now the logical qubits needed are: 6
+Validation passed
+---------------------------------
+Running benchmark on misex1_241
+We reuse 0 qubits, now the logical qubits needed are: 15
+Validation passed
+---------------------------------
+Running benchmark on mlp4_245
+We reuse 0 qubits, now the logical qubits needed are: 16
+Validation passed
+---------------------------------
+Running benchmark on mod10_171
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on mod10_176
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on mod5adder_127
+We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
+---------------------------------
+Running benchmark on mod5d1_63
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on mod5d2_64
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on mod5mils_65
+We reuse 2 qubits, now the logical qubits needed are: 3
+Validation passed
+---------------------------------
+Running benchmark on mod8-10_177
+We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
+---------------------------------
+Running benchmark on mod8-10_178
+We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
+---------------------------------
+Running benchmark on multiply_n13
+We reuse 5 qubits, now the logical qubits needed are: 8
+Validation passed
+---------------------------------
+Running benchmark on one-two-three-v0_97
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on one-two-three-v0_98
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on one-two-three-v1_99
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on one-two-three-v2_100
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on one-two-three-v3_101
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on plus63mod4096_163
+We reuse 0 qubits, now the logical qubits needed are: 13
+Validation passed
+---------------------------------
+Running benchmark on plus63mod8192_164
+We reuse 0 qubits, now the logical qubits needed are: 14
+Validation passed
+---------------------------------
+Running benchmark on pm1_249
+We reuse 3 qubits, now the logical qubits needed are: 11
+Validation passed
+---------------------------------
+Running benchmark on qft_10
+We reuse 0 qubits, now the logical qubits needed are: 10
+Validation passed
+---------------------------------
+Running benchmark on qft_16
+We reuse 0 qubits, now the logical qubits needed are: 16
+Validation passed
+---------------------------------
+Running benchmark on radd_250
+We reuse 1 qubits, now the logical qubits needed are: 12
+Validation passed
+---------------------------------
+Running benchmark on rd32-v0_66
+We reuse 1 qubits, now the logical qubits needed are: 3
+Validation passed
+---------------------------------
+Running benchmark on rd32-v1_68
+We reuse 1 qubits, now the logical qubits needed are: 3
+Validation passed
+---------------------------------
+Running benchmark on rd32_270
+We reuse 0 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on rd53_130
+We reuse 0 qubits, now the logical qubits needed are: 7
+Validation passed
+---------------------------------
+Running benchmark on rd53_131
+We reuse 0 qubits, now the logical qubits needed are: 7
+Validation passed
+---------------------------------
+Running benchmark on rd53_133
+We reuse 0 qubits, now the logical qubits needed are: 7
+Validation passed
+---------------------------------
+Running benchmark on rd53_135
+We reuse 0 qubits, now the logical qubits needed are: 7
+Validation passed
+---------------------------------
+Running benchmark on rd53_138
+We reuse 2 qubits, now the logical qubits needed are: 6
+Validation passed
+---------------------------------
+Running benchmark on rd53_251
+We reuse 0 qubits, now the logical qubits needed are: 8
+Validation passed
+---------------------------------
+Running benchmark on rd53_311
+We reuse 5 qubits, now the logical qubits needed are: 8
+Validation passed
+---------------------------------
+Running benchmark on rd73_140
+We reuse 5 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on rd73_252
+We reuse 0 qubits, now the logical qubits needed are: 10
+Validation passed
+---------------------------------
+Running benchmark on rd84_142
+We reuse 6 qubits, now the logical qubits needed are: 9
+Validation passed
+---------------------------------
+Running benchmark on rd84_253
+We reuse 0 qubits, now the logical qubits needed are: 12
+Validation passed
+---------------------------------
+Running benchmark on root_255
+We reuse 0 qubits, now the logical qubits needed are: 13
+Validation passed
+---------------------------------
+Running benchmark on sao2_257
+We reuse 0 qubits, now the logical qubits needed are: 14
+Validation passed
+---------------------------------
+Running benchmark on sf_274
+We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
+---------------------------------
+Running benchmark on sf_276
+We reuse 0 qubits, now the logical qubits needed are: 6
+Validation passed
+---------------------------------
+Running benchmark on sqn_258
+We reuse 0 qubits, now the logical qubits needed are: 10
+Validation passed
+---------------------------------
+Running benchmark on sqrt8_260
+We reuse 0 qubits, now the logical qubits needed are: 12
+Validation passed
+---------------------------------
+Running benchmark on squar5_261
+We reuse 2 qubits, now the logical qubits needed are: 11
+Validation passed
+---------------------------------
+Running benchmark on square_root_7
+We reuse 0 qubits, now the logical qubits needed are: 15
+Validation passed
+---------------------------------
+Running benchmark on sym10_262
+We reuse 0 qubits, now the logical qubits needed are: 12
+Validation passed
+---------------------------------
+Running benchmark on sym6_145
+We reuse 0 qubits, now the logical qubits needed are: 7
+Validation passed
+---------------------------------
+Running benchmark on sym6_316
+We reuse 7 qubits, now the logical qubits needed are: 7
+Validation passed
+---------------------------------
+Running benchmark on sym9_146
+We reuse 7 qubits, now the logical qubits needed are: 5
+Validation passed
+---------------------------------
+Running benchmark on sym9_148
+We reuse 0 qubits, now the logical qubits needed are: 10
+Validation passed
+---------------------------------
+Running benchmark on sym9_193
+We reuse 0 qubits, now the logical qubits needed are: 11
+Validation passed
+---------------------------------
+Running benchmark on sys6-v0_111
+We reuse 3 qubits, now the logical qubits needed are: 7
+Validation passed
+---------------------------------
+Running benchmark on system9
+We reuse 5 qubits, now the logical qubits needed are: 7
+Validation passed
+---------------------------------
+Running benchmark on test
+We reuse 0 qubits, now the logical qubits needed are: 10
+Validation passed
+---------------------------------
+Running benchmark on test1
+We reuse 2 qubits, now the logical qubits needed are: 2
+Validation passed
+---------------------------------
+Running benchmark on test2
+We reuse 2 qubits, now the logical qubits needed are: 2
+Validation passed
+---------------------------------
+Running benchmark on test3
+We reuse 2 qubits, now the logical qubits needed are: 3
+Validation passed
+---------------------------------
+Running benchmark on test4
+We reuse 0 qubits, now the logical qubits needed are: 15
+Validation passed
+---------------------------------
+Running benchmark on urf1_149
+We reuse 0 qubits, now the logical qubits needed are: 9
+Validation passed
+---------------------------------
+Running benchmark on urf1_278
+We reuse 0 qubits, now the logical qubits needed are: 9
+Validation passed
+---------------------------------
+Running benchmark on urf2_152
+We reuse 0 qubits, now the logical qubits needed are: 8
+Validation passed
+---------------------------------
+Running benchmark on urf2_277
+We reuse 0 qubits, now the logical qubits needed are: 8
+Validation passed
+---------------------------------
+Running benchmark on urf3_155
+We reuse 0 qubits, now the logical qubits needed are: 10
+Validation passed
+---------------------------------
+Running benchmark on urf3_279
+We reuse 0 qubits, now the logical qubits needed are: 10
+Validation passed
+---------------------------------
+Running benchmark on urf4_187
+We reuse 0 qubits, now the logical qubits needed are: 11
+Validation passed
+---------------------------------
+Running benchmark on urf5_158
+We reuse 0 qubits, now the logical qubits needed are: 9
+Validation passed
+---------------------------------
+Running benchmark on urf5_280
+We reuse 0 qubits, now the logical qubits needed are: 9
+Validation passed
+---------------------------------
+Running benchmark on urf6_160
+We reuse 0 qubits, now the logical qubits needed are: 15
+Validation passed
+---------------------------------
+Running benchmark on wim_266
+We reuse 2 qubits, now the logical qubits needed are: 9
+Validation passed
+---------------------------------
+Running benchmark on xor5_254
+We reuse 4 qubits, now the logical qubits needed are: 2
+Validation passed
+---------------------------------
+Running benchmark on z4_268
+We reuse 1 qubits, now the logical qubits needed are: 10
+Validation passed
+---------------------------------
