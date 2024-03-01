@@ -14,7 +14,7 @@ pip install qiskit==0.45
 Then, you can run the main.py file. There are a few command line options.
 1. -v 0 only outputs the result, and -v 1 outputs the circuit
 2. -b is for specifying the benchmark
-3. -weight is for setting the weight of the cost function to strike a balance between qubit reuse and weight cost. The one we used for the paper is weight = 1. 
+3. -w is for setting the weight of the cost function to strike a balance between qubit reuse and weight cost. The one we used for the paper is weight = 1. 
 
 Below is an example of running the bv_n10 benchmark in the benchmarks folder.
 
