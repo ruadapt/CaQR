@@ -6,7 +6,7 @@ To run the file, please follow these steps:
 
 ## Installation
 
-First, if Qiskit isn't installed, install it with version 0.45 using pip:
+First, if Qiskit isn't installed, install it with version 0.45 using pip. The current tested version works on Qiskit 0.45. 
 
 ```bash
 pip install qiskit==0.45
