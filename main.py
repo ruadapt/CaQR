@@ -95,7 +95,7 @@ def main():
     
     # out put the map to a txt file
 
-    print(f"We reuse {iter} qubits, now the logical qubits needed are: {len(lst_index)}")
+    print(f"We reuse {iter} qubits, and now a total of {len(lst_index)} logical qubits are used.")
     output_qasm(cur_qc, input_argument,map_post)
     # add the weight as a parameter.  
     # output the qubit chain with list<list> output as txt file
