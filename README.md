@@ -24,8 +24,10 @@ python main.py -b benchmarks/bv_n10.qasm -v 0
 
 The modified circuit will be in the output folder with ```_reuse``` appended to its file name. For the above example, the resulting code will be saved at ```output/bv_n10_reuse.qasm```. Additional files ending with ```_reuse_chain.txt``` and ```_reuse_map.txt``` will also be created, for verification purpose. 
 
-To verify the output files, run validate.py. Below is an example using bv_n10: 
+To verify the output, run validate.py. Below is an example using bv_n10: 
 ```bash 
 python validate.py bv_n10
 ```
+
+Note that you must run the "main.py" to generate the output for one benchmark file before you run "validate.py" on the same benchmark. For running "validate.py", you do not have to specify the path of the benchmark, as the path is hardcoded. 
 
