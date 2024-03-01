@@ -1,4 +1,4 @@
-The code is for the paper: "CaQR: A Compiler-Assisted Approach for Qubit Reuse through Dynamic Circuit". It is for resizing logical circuits. 
+The code is for the paper: ```CaQR: A Compiler-Assisted Approach for Qubit Reuse through Dynamic Circuit```. It is for resizing logical circuits. 
 
 # Running the Benchmark
 
@@ -6,17 +6,17 @@ To run the file, please follow these steps:
 
 ## Installation
 
-First, if Qiskit isn't installed, install it with version 0.45 using pip:
+First, if Qiskit isn't installed, install it with version 0.45 using pip. The current tested version works on Qiskit 0.45. 
 
 ```bash
 pip install qiskit==0.45
 ```
 Then, you can run the main.py file. There are a few command line options.
-1. -v 0 only outputs the result, and -v 1 outputs the circuit
+1. -v 0 only outputs the result (qubit count and qasm file), and -v 1 outputs the circuit diagram additionally. 
 2. -b is for specifying the benchmark
 3. -w is for setting the weight of the cost function to strike a balance between qubit reuse and weight cost. The one we used for the paper is weight = 1. 
 
-Below is an example of running the bv_n10 benchmark in the benchmarks folder. You must put all test qasm files in the "benchmarks" folder. 
+Below is an example of running the bv_n10 benchmark in the ```benchmarks``` folder. You must put all test qasm files in the ```benchmarks``` folder. 
 
 ```bash
 python main.py -b benchmarks/bv_n10.qasm -v 0
@@ -29,5 +29,5 @@ To verify the output, run validate.py. Below is an example using bv_n10:
 python validate.py bv_n10
 ```
 
-Note that you must run the "main.py" to generate the output for one benchmark file before you run "validate.py" on the same benchmark. For running "validate.py", you do not have to specify the path of the benchmark, as the path is hardcoded. 
+Note that you must run the "main.py" to generate the output for one benchmark file before you run "validate.py" on the same benchmark. For running "validate.py", you do not have to specify the benchmark path, as the path is hardcoded. 
 
