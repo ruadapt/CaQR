@@ -19,7 +19,7 @@ def main():
     parser.add_argument('-b','--benchmark', type=str, help="Path to the QASM file")
     parser.add_argument('-v', '--verbose', type=int, default=0,
                         help="Verbosity level (default: 0)")
-    parser.add_argument('-w', '--weight', type=list[int], default=[1,1,1],
+    parser.add_argument('-w', '--weight', type=tuple, default=(1,1,1),
                         help="weight for the depth difference (default: 0)")
 
     args = parser.parse_args()
