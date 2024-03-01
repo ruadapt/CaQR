@@ -16,7 +16,7 @@ Then, you can run the main.py file. There are a few command line options.
 2. -b is for specifying the benchmark
 3. -w is for setting the weight of the cost function to strike a balance between qubit reuse and weight cost. The one we used for the paper is weight = 1. 
 
-Below is an example of running the bv_n10 benchmark in the benchmarks folder.
+Below is an example of running the bv_n10 benchmark in the benchmarks folder. You must put all test qasm files in the "benchmarks" folder. 
 
 ```bash
 python main.py -b benchmarks/bv_n10.qasm -v 0
