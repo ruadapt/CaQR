@@ -6,7 +6,7 @@ To run the file, please follow these steps:
 
 ## Installation
 
-First, if Qiskit isn't installed, install it with version 0.45 using pip. The current tested version works on Qiskit 0.45. This version has also been tested and is working on Qiskit version 0.25.2.
+First, if Qiskit isn't installed, install it with version 0.45 using pip. The current tested version works on Qiskit 0.45. This version has also been tested and is working on Qiskit version 0.25.2. The code depends on the python package ```networkx```. You will also need to install ```networkx``` if you do not have it. Python version is 3.8 on this tested version. 
 
 ```bash
 pip install qiskit==0.45
