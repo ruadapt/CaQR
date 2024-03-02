@@ -19,11 +19,15 @@ def main():
     parser.add_argument('-b','--benchmark', type=str, help="Path to the QASM file")
     parser.add_argument('-v', '--verbose', type=int, default=0,
                         help="Verbosity level (default: 0)")
-    parser.add_argument('-w', '--weight', type=tuple, default=(1,1,1),
+    parser.add_argument('-w1', '--weight1', type=float, default=1,
                         help="weight for the depth difference (default: 0)")
+    parser.add_argument('-w2', '--weight2', type=float, default=1,
+                        help="weight for the depth difference (default: 0)")
+    
 
     args = parser.parse_args()
     input_argument = args.benchmark
+    weight = (1,args.weight1,args.weight2)
     qc = get_circuit(input_argument)
     # qc = QuantumCircuit(5)
     # for k in range(5):
@@ -51,7 +55,7 @@ def main():
             test_qc = cur_qc.copy() 
             test_out_qc = modify_circuit(test_qc, reuse_pairs[i])
             
-            if args.weight[0]*(test_out_qc.depth() - cur_qc.depth()) + args.weight[1]*lst_index[reuse_pairs[i][0]]+args.weight[2]*abs(lst_index[reuse_pairs[i][0]] - fst_index[reuse_pairs[i][1]]) < depth_diff:
+            if weight[0]*(test_out_qc.depth() - cur_qc.depth()) + weight[1]* lst_index[reuse_pairs[i][0]]+weight[2]*abs(lst_index[reuse_pairs[i][0]] - fst_index[reuse_pairs[i][1]]) < depth_diff:
                 depth_diff = test_out_qc.depth() - qc.depth() + 0.5*lst_index[reuse_pairs[i][1]]
                 best_pair = reuse_pairs[i]
         if args.verbose > 0:

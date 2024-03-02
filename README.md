@@ -14,7 +14,7 @@ pip install qiskit==0.45
 Then, you can run the main.py file. There are a few command line options.
 1. -v 0 only outputs the result (qubit count and qasm file), and -v 1 outputs the circuit diagram additionally. 
 2. -b is for specifying the benchmark
-3. -w is for setting the weight of the cost function to strike a balance between qubit reuse and weight cost. The one we used for the paper is weight = 1. 
+3. -w1 -w2 is for setting the weight of the cost function to strike a balance between qubit reuse and weight cost. They are optional. The default is w1 = 1 and w2 = 1. 
 
 Below is an example of running the bv_n10 benchmark in the ```benchmarks``` folder. You must put all test qasm files in the ```benchmarks``` folder. 
 
